@@ -81,6 +81,9 @@ class Api
             case "delete-user":
                 $this->delete_existing_user();
                 break;
+            case "regenerate-token":
+                $this->regenerate_token();
+                break;
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "404 Not Found";

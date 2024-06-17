@@ -9,22 +9,32 @@ The "profile-api" directory should be inside the xampp/htdocs directory for so t
 
 #### Default GET request
 http://localhost/profile-api/public/api/
+
 ![get_request_index](readme_photos/get_request_index.png)
 
 #### Get all the users in the database
 http://localhost/profile-api/public/api/?what=users
+
 ![get_request_users](readme_photos/get_request_users.png)
 
 ## Post request endpoints
 
 #### Add a user to our database
 http://localhost/profile-api/public/api/?what=add-user
+
 ![post_request_add_user](readme_photos/post_request_add_user.png)
 
-#### Edit a user to our database
+#### Edit a user in our database
 http://localhost/profile-api/public/api/?what=edit-user
+
 ![post_request_add_user](readme_photos/post_request_edit_user.png)
 
-#### Delete a user to our database
+#### Delete a user from our database
 http://localhost/profile-api/public/api/?what=delete-user
+
 ![post_request_add_user](readme_photos/post_request_delete_user.png)
+
+#### Regenerate Bearer token of a user
+http://localhost/profile-api/public/api/?what=regenerate-token
+
+![post_request_regenerate_token](readme_photos/post_request_regenerate_token.png)
