@@ -35,30 +35,33 @@ if ($_SESSION["user_logged_in"]) {
 
 <?php require_once "../../views/partials/header.php"; ?>
 
-<article>
-    <header>
-        <h1>Welcome back, <?= $name; ?></h1>
-    </header>
-    <h2>Access Token: <?= $access_token; ?></h2>
-    <p>Token Valid Until: <?= $token_valid_until; ?></p>
-    <form action="regenerate_token.php">
-        <button type="submit">Regenerate Token</button>
-    </form>
-    <hr>
-    <p>Name: <?= $name; ?></p>
-    <p>Email: <?= $email; ?></p>
-    <p>Password: <?= $password; ?></p>
-    <p>Contact Number: <?= $contact_number; ?></p>
-    <p>Birthdate: <?= $birthdate; ?></p>
-    <p>Address: <?= $address; ?></p>
-    <p>
-        Profile Photo:
-        <img src="<?= $photo; ?>" alt="profile photo" style="height: 12rem;">
-    </p>
-    <p>Created At: <?= $created_at; ?></p>
-    <p>Updated At: <?= $updated_at; ?></p>
-
-    <footer>© 2024 Rein Solis</footer>
-</article>
+<div class="container d-flex flex-column align-items-center">
+    <h2>Welcome back, <?= $name; ?></h2>
+    <div class="card my-2" style="width: 28rem;">
+        <img src="<?= $photo; ?>" alt="profile photo">
+        <div class="card-body">
+            <h2 class="card-title"><?= $name; ?></h2>
+            <div class="card-text">
+                <div class="mb-3">
+                    <h4>Access Token: <?= $access_token; ?></h4>
+                    <p><strong>Token Valid Until:</strong> <?= date("m-d-Y h:i:s A", strtotime($token_valid_until)); ?></p>
+                    <form action="regenerate_token.php">
+                        <button type="submit" class="btn btn-primary btn-lg">Regenerate Token</button>
+                    </form>
+                </div>
+                <div class="mb-3">
+                    <p><strong>Name:</strong> <?= $name; ?></p>
+                    <p><strong>Email:</strong> <?= $email; ?></p>
+                    <p><strong>Password:</strong> <?= $password; ?></p>
+                    <p><strong>Contact Number:</strong> <?= $contact_number; ?></p>
+                    <p><strong>Birthdate:</strong> <?= $birthdate; ?></p>
+                    <p><strong>Address:</strong> <?= $address; ?></p>
+                    <p><strong>Created At:</strong> <?= $created_at; ?></p>
+                    <p><strong>Updated At:</strong> <?= $updated_at; ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php require_once "../../views/partials/footer.php"; ?>

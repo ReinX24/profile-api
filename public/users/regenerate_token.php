@@ -2,14 +2,14 @@
 
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["user_info"])) {
     // echo "<pre>";
     // var_dump($_SESSION);
     // echo "</pre>";
 
     $id = $_SESSION["user_info"]["id"];
     $access_token = $_SESSION["user_info"]["access_token"];
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     require_once "../../Database.php";
 
     // Reset session information
@@ -33,12 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <?php require_once "../../views/partials/header.php"; ?>
 
-<form method="POST">
-    <h2>Regenerate token?</h2>
-    <p>Current token: <?= $access_token; ?></p>
-    <input type="hidden" name="id" value="<?= $id; ?>">
-    <button type="submit">Regenerate Token</button>
-    <a href="dashboard.php"><button type="submit">Cancel</button></a>
-</form>
+<div class="container">
+    <form method="POST">
+        <h1>Regenerate token?</h1>
+        <p class="my-3 fs-4"><strong>Current token:</strong> <?= $access_token; ?></p>
+        <input type="hidden" name="id" value="<?= $id; ?>">
+        <button type="submit" class="btn btn-primary btn-lg">Regenerate Token</button>
+        <a href="dashboard.php"><button type="submit" class="btn btn-outline-secondary btn-lg">Cancel</button></a>
+    </form>
+</div>
 
 <?php require_once "../../views/partials/footer.php"; ?>

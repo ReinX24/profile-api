@@ -1,4 +1,7 @@
 <?php
+
+$current_page = "register_page";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "../../Database.php";
 
