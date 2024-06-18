@@ -1,6 +1,6 @@
 <div class="container my-4">
     <h2 class="mb-3">Register User</h2>
-    <h4 class="text-danger"><?= $success_message ?? ""; ?></h4>
+    <h4 class="text-success"><?= $success_message ?? ""; ?></h4>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label fs-3">Name</label>

@@ -1,6 +1,6 @@
 <?php
 
-require_once "Database.php";
+require_once "../../Database.php";
 
 class Api
 {
@@ -10,6 +10,25 @@ class Api
     public function __construct()
     {
         $this->database = new Database();
+    }
+
+    // Handles the api request
+    public function handle_request()
+    {
+        if (!$this->is_authenticated()) {
+            header("HTTP/1.1 401 Unauthorized");
+            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
+            exit();
+        }
+
+        $what = $_GET["what"] ?? "/"; // no get parameters
+        $request_method = $_SERVER["REQUEST_METHOD"];
+
+        if ($request_method == "GET") {
+            $this->handle_get_request($what);
+        } elseif ($request_method == "POST") {
+            $this->handle_post_request($what);
+        }
     }
 
     // Checks if the request has the corrent api request key or token
@@ -43,26 +62,23 @@ class Api
             exit;
         }
 
-
         return $this->get_bearer_token() == $this->database->get_matching_token($this->get_bearer_token());
     }
 
-    // Handles the api request
-    public function handle_request()
+    private function handle_get_request(string $what)
     {
-        if (!$this->is_authenticated()) {
-            header("HTTP/1.1 401 Unauthorized");
-            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
-            exit();
-        }
-
-        $what = $_GET["what"] ?? "/"; // no get parameters
-        $request_method = $_SERVER["REQUEST_METHOD"];
-
-        if ($request_method == "POST") {
-            $this->handle_post_request($what);
-        } elseif ($request_method == "GET") {
-            $this->handle_get_request($what);
+        switch ($what) {
+            case "/":
+                echo "GET Request!";
+                break;
+            case "users":
+                // echo json_encode($this->database->get_all_users());
+                $this->get_all_users();
+                break;
+            default:
+                header("HTTP/1.1 404 Not Found");
+                echo "404 Not Found";
+                break;
         }
     }
 
@@ -83,23 +99,6 @@ class Api
                 break;
             case "regenerate-token":
                 $this->regenerate_token();
-                break;
-            default:
-                header("HTTP/1.1 404 Not Found");
-                echo "404 Not Found";
-                break;
-        }
-    }
-
-
-    private function handle_get_request(string $what)
-    {
-        switch ($what) {
-            case "/":
-                echo "GET Request!";
-                break;
-            case "users":
-                echo json_encode($this->database->get_all_users());
                 break;
             default:
                 header("HTTP/1.1 404 Not Found");
@@ -143,6 +142,17 @@ class Api
         return null;
     }
 
+    /*
+        GET request
+        Fields:
+            - what=users
+     */
+    private function get_all_users()
+    {
+        $response = $this->database->get_all_users();
+        echo json_encode($response);
+    }
+
     /* 
         POST request
         Fields:
@@ -156,12 +166,6 @@ class Api
     */
     public function create_new_user()
     {
-        if (!$this->is_authenticated()) {
-            header("HTTP/1.1 401 Unauthorized");
-            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
-            exit();
-        }
-
         $response = $this->database->create_new_user_with_api();
         echo json_encode($response);
     }
@@ -179,12 +183,6 @@ class Api
     */
     public function edit_existing_user()
     {
-        if (!$this->is_authenticated()) {
-            header("HTTP/1.1 401 Unauthorized");
-            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
-            exit();
-        }
-
         $response = $this->database->edit_user_with_api();
         echo json_encode($response);
     }
@@ -196,12 +194,6 @@ class Api
     */
     public function delete_existing_user()
     {
-        if (!$this->is_authenticated()) {
-            header("HTTP/1.1 401 Unauthorized");
-            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
-            exit();
-        }
-
         $response = $this->database->delete_user_with_api();
         echo json_encode($response);
     }
@@ -219,12 +211,6 @@ class Api
     */
     public function regenerate_token()
     {
-        if (!$this->is_authenticated()) {
-            header("HTTP/1.1 401 Unauthorized");
-            echo json_encode(["status" => "401", "message" => "Unauthorized!"]);
-            exit();
-        }
-
         $access_token = $this->database->regenerate_token();
         echo json_encode(["New Token" => $access_token]);
     }
