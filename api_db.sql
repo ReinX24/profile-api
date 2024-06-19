@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 07:21 AM
+-- Generation Time: Jun 19, 2024 at 04:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact_number`, `birthdate`, `address`, `photo`, `access_token`, `token_valid_until`, `created_at`, `updated_at`) VALUES
-(1, 'rein', 'rein@gmail.com', '$2y$10$gk.0cK6D.9tVBRGDi63nKer4le0vFsY8u.ofFEM3NobY7dfXp0Q4W', '', '0000-00-00', '', 'images/UP12Wyez/Screenshot 2024-06-11 234210.png', 'H9IQMq7N', '2024-06-18 13:21:00', '2024-06-16 01:09:37', '2024-06-17 05:21:00');
+(1, 'Rein', 'rein@gmail.com', '$2y$10$rG5t68xAQKJXmzqM/1uXu.Q11b4pqVZN6cs6wKrj92hcSVZsrNx7S', '+63 9123 123 123', '2003-08-24', 'Philippines', 'images/V52nCTzu/Profile Photo.jpg', 'XfqbZvNg', '2024-06-20 22:06:18', '2024-06-17 10:26:58', '2024-06-19 14:06:18'),
+(4, 'John Carmack', 'johncarmack@gmail.com', '$2y$10$0mL69SZNmxlZDcQpIyI8QeutItG54QFeBCIqF5HZbFPf/d9wxJHaa', '+63 9456 456 456', '1970-08-21', 'United States of America', 'images/tzaTQMkI/434757598_310348125231983_3422059153426297560_n.jpg', '5tBZnKAl', '2024-06-18 21:16:49', '2024-06-17 13:16:49', '2024-06-17 13:17:30'),
+(5, 'Richard Stallman', 'richard@gmail.com', '$2y$10$NjRs7/lxpR6OZAM0IyIwUeIQ7MzKZonspbbJ4T19sVjBPDOsAcRG.', '+63 9456 456 456', '1953-03-16', 'Boston, Massachusetts', 'images/6rhur7yr/Richard_Stallman_at_LibrePlanet_2019.jpg', 'pVuaKm3R', '2024-06-18 21:36:30', '2024-06-17 13:36:30', '2024-06-17 13:42:25'),
+(8, 'Jane', 'jane@gmail.com', '$2y$10$nZ1ax3nBvcIMMOkRsHopoeOCAKaRMYRz363fwDrUp0NwKtAyt4fR6', '+63 9123 123 123', '1987-08-24', 'United Kingdom', 'images/nqnOjvA4/jane.png', 'Eo55czi9', '2024-06-19 22:35:34', '2024-06-18 14:28:45', '2024-06-18 14:35:34');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +70,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
