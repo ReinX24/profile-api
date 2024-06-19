@@ -48,7 +48,7 @@ class Api
             exit;
         }
 
-        $token_valid_until = $this->database->get_user_by_token($this->get_bearer_token());
+        $token_valid_until = $this->database->get_token_valid_until($this->get_bearer_token());
         $current_date_time = date("Y-m-d H:i:s", time());
 
         // var_dump($token_valid_until);

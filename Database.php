@@ -38,7 +38,7 @@ class Database
         return $user_info["access_token"] ?? null;
     }
 
-    public function get_user_by_token(string $bearer_token)
+    public function get_token_valid_until(string $bearer_token)
     {
         $get_token_sql =
             "SELECT 
@@ -123,8 +123,6 @@ class Database
         // Checks if there are any errors, adds photo to a folder if there are none
         if (empty($errors) && !empty($profile_image)) {
 
-            require_once "functions.php"; // importing for random_string
-
             $image_path = "images/" . $this->functions->random_string(8) . "/" . $profile_image["name"];
 
             mkdir(dirname(__DIR__ . "/public/" . $image_path));
@@ -200,8 +198,6 @@ class Database
         // Checks if there are any errors, adds photo to a folder if there are none
         if (empty($errors) && !empty($profile_image)) {
 
-            require_once "functions.php"; // importing for random_string
-
             $image_path = "images/" . $this->functions->random_string(8) . "/" . $profile_image["name"];
 
             mkdir(dirname(__DIR__ . "/public/" . $image_path));
@@ -243,7 +239,7 @@ class Database
         }
 
         if (empty($errors)) {
-            return ["post_info" => $_POST, "photo_info" => $_FILES["photo"]];
+            return ["post_info" => $_POST, "photo_info" => $_FILES["photo"] ?? null];
         }
 
         return $errors;
@@ -290,8 +286,6 @@ class Database
                 unlink(__DIR__ . "/public/" . $current_user_info["photo"]); // deletes photo
                 rmdir(__DIR__ . "/public/" . $current_user_info["photo"] . "/../"); // delete directory
             }
-
-            require_once "functions.php"; // importing for random_string
 
             $image_path = "images/" . $this->functions->random_string(8) . "/" . $profile_image["name"];
 
@@ -346,6 +340,16 @@ class Database
     {
         $id = $_POST["id"];
 
+        $user_info = $this->get_user_by_id($id);
+        $user_image = $user_info["photo"];
+
+        // Deleting the user's photo before removing them from the database
+        if (isset($user_image)) {
+            unlink(__DIR__ . "/public/" . $user_image); // deletes photo
+            rmdir(__DIR__ . "/public/" . $user_image . "/../"); // delete directory
+        }
+
+        // Deleting the user information from our database
         $delete_user_sql =
             "DELETE FROM
                 users

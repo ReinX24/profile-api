@@ -44,20 +44,21 @@ if ($_SESSION["user_logged_in"]) {
             <div class="card-text">
                 <div class="mb-3">
                     <h4>Access Token: <?= $access_token; ?></h4>
-                    <p><strong>Token Valid Until:</strong> <?= date("m-d-Y h:i:s A", strtotime($token_valid_until)); ?></p>
-                    <form action="regenerate_token.php">
+                    <p class="fs-5"><strong>Token Valid Until:</strong> <?= date("m-d-Y h:i:s A", strtotime($token_valid_until)); ?></p>
+                    <form action="regenerate_token.php" class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg">Regenerate Token</button>
                     </form>
+                    <hr>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 fs-5">
                     <p><strong>Name:</strong> <?= $name; ?></p>
                     <p><strong>Email:</strong> <?= $email; ?></p>
                     <p><strong>Password:</strong> <?= $password; ?></p>
                     <p><strong>Contact Number:</strong> <?= $contact_number; ?></p>
                     <p><strong>Birthdate:</strong> <?= $birthdate; ?></p>
-                    <p><strong>Address:</strong> <?= $address; ?></p>
-                    <p><strong>Created At:</strong> <?= $created_at; ?></p>
-                    <p><strong>Updated At:</strong> <?= $updated_at; ?></p>
+                    <p><strong>Address:</strong> <?= $address; ?> </p>
+                    <p><strong>Created At:</strong> <?= date("m-d-Y h:i:s A", strtotime($created_at)); ?></p>
+                    <p><strong>Updated At:</strong> <?= date("m-d-Y h:i:s A", strtotime($updated_at)); ?></p>
                 </div>
             </div>
         </div>
