@@ -4,10 +4,6 @@ session_start();
 
 if ($_SESSION["user_logged_in"]) {
 
-    // echo "<pre>";
-    // var_dump($_SESSION);
-    // echo "</pre>";
-
     require_once "../../Database.php";
 
     $database = new Database();
@@ -28,7 +24,6 @@ if ($_SESSION["user_logged_in"]) {
         $photo = "../" . $_SESSION["user_info"]["photo"];
     } else {
         // Use a placeholder photo
-        echo "Test";
         $photo = "../images/user_placeholder.png";
     }
 
@@ -53,6 +48,7 @@ if ($_SESSION["user_logged_in"]) {
             <div class="card-text">
                 <div class="mb-3">
                     <h4>Access Token: <?= $access_token; ?></h4>
+                    <!-- TODO: make text red when the Token is expired -->
                     <p class="fs-5"><strong>Token Valid Until:</strong> <?= date("m-d-Y h:i:s A", strtotime($token_valid_until)); ?></p>
                     <form action="regenerate_token.php" class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg">Regenerate Token</button>

@@ -51,10 +51,6 @@ class Api
         $token_valid_until = $this->database->get_token_valid_until($this->get_bearer_token());
         $current_date_time = date("Y-m-d H:i:s", time());
 
-        // var_dump($token_valid_until);
-        // var_dump($current_date_time);
-        // exit;
-
         // If the current date is greater than the token valid until
         if ($current_date_time > $token_valid_until) {
             header("HTTP/1.1 401 Unauthorized");
@@ -72,7 +68,6 @@ class Api
                 echo "GET Request!";
                 break;
             case "users":
-                // echo json_encode($this->database->get_all_users());
                 $this->get_all_users();
                 break;
             default:

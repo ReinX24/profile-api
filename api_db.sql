@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 04:39 PM
+-- Generation Time: Jun 20, 2024 at 06:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,10 +47,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact_number`, `birthdate`, `address`, `photo`, `access_token`, `token_valid_until`, `created_at`, `updated_at`) VALUES
-(1, 'Rein', 'rein@gmail.com', '$2y$10$rG5t68xAQKJXmzqM/1uXu.Q11b4pqVZN6cs6wKrj92hcSVZsrNx7S', '+63 9123 123 123', '2003-08-24', 'Philippines', 'images/V52nCTzu/Profile Photo.jpg', 'XfqbZvNg', '2024-06-20 22:06:18', '2024-06-17 10:26:58', '2024-06-19 14:06:18'),
+(1, 'Rein', 'rein@gmail.com', '$2y$10$rG5t68xAQKJXmzqM/1uXu.Q11b4pqVZN6cs6wKrj92hcSVZsrNx7S', '+63 9123 123 123', '2003-08-24', 'Philippines', 'images/V52nCTzu/Profile Photo.jpg', '1FlML1ED', '2024-06-21 12:05:24', '2024-06-17 10:26:58', '2024-06-20 04:05:24'),
 (4, 'John Carmack', 'johncarmack@gmail.com', '$2y$10$0mL69SZNmxlZDcQpIyI8QeutItG54QFeBCIqF5HZbFPf/d9wxJHaa', '+63 9456 456 456', '1970-08-21', 'United States of America', 'images/tzaTQMkI/434757598_310348125231983_3422059153426297560_n.jpg', '5tBZnKAl', '2024-06-18 21:16:49', '2024-06-17 13:16:49', '2024-06-17 13:17:30'),
 (5, 'Richard Stallman', 'richard@gmail.com', '$2y$10$NjRs7/lxpR6OZAM0IyIwUeIQ7MzKZonspbbJ4T19sVjBPDOsAcRG.', '+63 9456 456 456', '1953-03-16', 'Boston, Massachusetts', 'images/6rhur7yr/Richard_Stallman_at_LibrePlanet_2019.jpg', 'pVuaKm3R', '2024-06-18 21:36:30', '2024-06-17 13:36:30', '2024-06-17 13:42:25'),
-(8, 'Jane', 'jane@gmail.com', '$2y$10$nZ1ax3nBvcIMMOkRsHopoeOCAKaRMYRz363fwDrUp0NwKtAyt4fR6', '+63 9123 123 123', '1987-08-24', 'United Kingdom', 'images/nqnOjvA4/jane.png', 'Eo55czi9', '2024-06-19 22:35:34', '2024-06-18 14:28:45', '2024-06-18 14:35:34');
+(17, 'John', 'john@gmail.com', '$2y$10$jJifGXh6.kIcEuRY/oE/0u7tlSMYCEkSD/wH.G9Asiw67eEeCyPT6', '+63 9123 123 123', '2003-12-25', 'United Kingdom', NULL, 'ftZyebBh', '2024-06-21 11:43:09', '2024-06-20 03:43:09', '2024-06-20 03:43:09'),
+(19, 'Jane', 'jane@gmail.com', '$2y$10$heXu7wizm7cvGBf7q2iwoe4wM.skCzQCkd4iMOTlvtyxZgAjSonhy', '+63 9123 123 123', '2003-12-25', 'Philippines', NULL, 'MlQ9Zpjo', '2024-06-21 12:01:08', '2024-06-20 04:01:08', '2024-06-20 04:01:08');
 
 --
 -- Indexes for dumped tables
@@ -70,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

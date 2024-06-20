@@ -96,14 +96,6 @@ class Database
 
         $profile_image = $_FILES["photo"] ?? null;
 
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
-
-        // echo "<pre>";
-        // var_dump($_FILES);
-        // echo "</pre>";
-
         if (!$name) {
             $errors["name_error"] = "Name is required for registering!";
         }

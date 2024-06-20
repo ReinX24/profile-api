@@ -3,18 +3,10 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION["user_info"])) {
-    // echo "<pre>";
-    // var_dump($_SESSION);
-    // echo "</pre>";
-
     $id = $_SESSION["user_info"]["id"];
     $access_token = $_SESSION["user_info"]["access_token"];
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     require_once "../../Database.php";
-
-    // Reset session information
-    // session_unset();
-    // session_destroy();
 
     $database = new Database();
     $database->regenerate_token();
