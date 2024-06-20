@@ -22,7 +22,16 @@ if ($_SESSION["user_logged_in"]) {
     $contact_number = $_SESSION["user_info"]["contact_number"];
     $birthdate = $_SESSION["user_info"]["birthdate"];
     $address = $_SESSION["user_info"]["address"];
-    $photo = "../" . $_SESSION["user_info"]["photo"];
+
+    if (isset($_SESSION["user_info"]["photo"])) {
+        // Checks if a user exists
+        $photo = "../" . $_SESSION["user_info"]["photo"];
+    } else {
+        // Use a placeholder photo
+        echo "Test";
+        $photo = "../images/user_placeholder.png";
+    }
+
     $access_token = $_SESSION["user_info"]["access_token"];
     $token_valid_until = $_SESSION["user_info"]["token_valid_until"];
     $created_at = $_SESSION["user_info"]["created_at"];

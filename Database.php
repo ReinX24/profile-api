@@ -121,7 +121,7 @@ class Database
         }
 
         // Checks if there are any errors, adds photo to a folder if there are none
-        if (empty($errors) && !empty($profile_image)) {
+        if (empty($errors) && !empty($profile_image["name"])) {
 
             $image_path = "images/" . $this->functions->random_string(8) . "/" . $profile_image["name"];
 
